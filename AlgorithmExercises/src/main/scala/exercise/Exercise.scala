@@ -5,18 +5,18 @@ package exercise
  */
 object Exercise {
 
-    def isSubstring(s1: String, s2: String) = {
+    def isSubstring (s1: String, s2: String) = {
 
-      def inner(str: String, contain: String): Boolean = {
-        if (contain.isEmpty) return true
+      def inner(str: String, strPart: String, s2Part: String): Boolean = {
+        if (s2Part.isEmpty) return true
         else if (str.isEmpty) return false
 
-        if (str.head == contain.head)
-          inner(str.tail, contain.tail)
+        if (strPart.head == s2Part.head)
+          inner(str, strPart.tail, s2Part.tail)
         else
-          inner(str.tail, s2)
+          inner(str.tail, str.tail, s2)
       }
-      inner(s1, s2)
+      inner(s1, s1, s2)
     }
 
 }
